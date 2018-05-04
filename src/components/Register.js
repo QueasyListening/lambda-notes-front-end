@@ -12,7 +12,7 @@ export const Register = ({history, login, notes, loggedInAs}) => {
         console.log(usernameInput.value);
         const username = usernameInput.value;
         //we're asking the server if the username already exists. It will return true or false
-        axios.post(`http://localhost:5000/api/username`, {username})
+        axios.post(`https://frozen-inlet-93885.herokuapp.com/api/username`, {username})
             .then(response => {
                 console.log(response);
                 if(response.data) {
@@ -28,7 +28,7 @@ export const Register = ({history, login, notes, loggedInAs}) => {
                             password: passwordInput.value,
                             notes: notes 
                         }
-                        axios.post('http://localhost:5000/api/register', newUser)
+                        axios.post('https://frozen-inlet-93885.herokuapp.com/api/register', newUser)
                             .then(response => {
                                 if (loggedInAs !== '')
                                     newUser.notes = [];
