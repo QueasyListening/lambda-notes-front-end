@@ -208,3 +208,13 @@ form .save_button:hover {
   align-self: flex-start;
   font-weight: bold;
 }
+
+#login_btn {
+  width: 85px;
+  text-align: left;
+}
+
+#logout_btn {
+  width: 85px;
+  text-align: left;
+}

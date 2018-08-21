@@ -18,7 +18,9 @@ class App extends Component {
     usernameInput:'',
     passwordInput: '',
     loggedInAs: '',
-    password: ''
+    password: '',
+    loading: false,
+    loginText: 'Log in'
   }
 
   addNewNote = (note) => {
@@ -75,7 +77,11 @@ class App extends Component {
 
   }
   handleLogin = () => {
-
+    document.getElementById('login_btn').disabled = true;
+    this.setState( { loginText: 'Loading' });
+    this.loading = window.setInterval(() => {
+      this.state.loginText === 'Loading...' ? this.setState({ loginText: 'Loading' }) : this.setState((prevState) => ({ loginText: prevState.loginText + '.' }))
+    }, 300);
     axios.post(`https://frozen-inlet-93885.herokuapp.com/api/login`, {username: this.state.usernameInput, password: this.state.passwordInput})
     .then(response => {
       console.log(response);
@@ -84,12 +90,15 @@ class App extends Component {
         document.getElementById('password_warning').style.display = 'none';
         document.getElementById('current_user').style.display = 'block';
         document.getElementById('logout_btn').disabled = false;
-        document.getElementById('login_btn').disabled = true;
+        this.setState({ loginText: 'Log in' });
+        window.clearInterval(this.loading);
         this.setNextId();
     })
     .catch(error => {
       console.log('THere was error:', error);
       document.getElementById('password_warning').style.display = 'block';
+      this.setState({ loginText: 'Log in' });
+        window.clearInterval(this.loading);
     })
 
     this.setState({usernameInput: '', passwordInput: ''});
@@ -148,7 +157,7 @@ class App extends Component {
   }
 
   render() {
-      
+    
     return (
       <div className="App">
         <div className='container'>
@@ -159,7 +168,7 @@ class App extends Component {
               <Link to='/addNewNote' className='nav_button'>+Create New Notes</Link>
               <Link to='/Register' className='nav_button'>Register for an Account</Link>
               <br/>
-              <button id='login_btn' data-toggle="modal" data-target="#loginModal">Log In</button>
+              <button id='login_btn' data-toggle="modal" data-target="#loginModal">{this.state.loginText}</button>
               <div id='password_warning'>Incorrect Username/Password</div>
               <br/>
               <button id='logout_btn' onClick={(event)=>{event.preventDefault(); this.logout()}}>Log Out</button>

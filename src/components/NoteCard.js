@@ -7,7 +7,7 @@ class NoteCard extends Component {
         let textPreview = this.props.note.text.slice(0, 100) + '...';
         return (
             <div className='test'>
-                <Link to={`/noteview/${this.props.note.id}`} className='note_card'>   
+                <Link to={`/noteview/${this.props.note.id}`} className='note_card' draggable="true">   
                     <h6 className='header_font'>{this.props.note.title}</h6>
                     <hr/>
                     <div className='card_text'>{textPreview}</div>

@@ -15,7 +15,7 @@ class NoteList extends Component {
               <div className='row'>
                 <div className='col note_box'>
                     {this.props.notes.map(note => {
-                        return (<NoteCard note={note} key={note.id} />)
+                        return (<NoteCard draggable="true" note={note} key={note.id} />)
                     })}
                 </div>
               </div>
