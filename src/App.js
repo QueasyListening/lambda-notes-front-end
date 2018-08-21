@@ -151,6 +151,12 @@ class App extends Component {
     }
     this.setState({id: newId});
   }
+
+  setFocus = () => {
+    setTimeout(() => {
+      document.getElementById('focused').focus();
+    }, 500);
+  }
   
   componentWillUnmount() {
     // this.updateServer();  
@@ -168,7 +174,7 @@ class App extends Component {
               <Link to='/addNewNote' className='nav_button'>+Create New Notes</Link>
               <Link to='/Register' className='nav_button'>Register for an Account</Link>
               <br/>
-              <button id='login_btn' data-toggle="modal" data-target="#loginModal">{this.state.loginText}</button>
+              <button id='login_btn' data-toggle="modal" data-target="#loginModal" onClick={this.setFocus} >{this.state.loginText}</button>
               <div id='password_warning'>Incorrect Username/Password</div>
               <br/>
               <button id='logout_btn' onClick={(event)=>{event.preventDefault(); this.logout()}}>Log Out</button>
@@ -195,7 +201,7 @@ class App extends Component {
                 <div className="modal-body" >
                 Log In
                 <form className='new_note_form' >
-                    <input onChange={this.handleUsername} value={this.state.usernameInput} placeholder='Username' id='focused' autoFocus />
+                    <input onChange={this.handleUsername} value={this.state.usernameInput} placeholder='Username' id='focused' />
                     <br/>
                     <input onChange={this.handlePassword} value={this.state.passwordInput} type='password' placeholder='Password' />
                     <br/>               
