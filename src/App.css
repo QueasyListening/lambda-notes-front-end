@@ -29,11 +29,6 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .container {
   height: 100%;
 }
@@ -47,7 +42,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 100%;
+  /* height: 100%; */
   color: white;
   padding-left: 26px;
   
@@ -83,6 +78,7 @@
 
 .left_side a {
   color: white;
+  font-weight:550;
 }
 
 .left_side a:hover {
@@ -126,7 +122,8 @@
   display: inline-block;
   border: 1px solid gray;
   color:black;
-  box-shadow:2px 2px 2px 1px gray;
+  box-shadow:0px 2px 4px gray;
+  border-radius: 3px;
 }
 
 .test a:hover {
@@ -210,11 +207,30 @@ form .save_button:hover {
 }
 
 #login_btn {
-  width: 85px;
-  text-align: left;
+  /* width: 85px; */
+  padding: 0;
+  font-size:18px;
+  
+  color: white;
+  font-weight: 550;
+  margin: 0;
 }
 
 #logout_btn {
-  width: 85px;
-  text-align: left;
+  font-size:18px;
+  padding: 0;
+  color: white;
+  font-weight: 550;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .left_side .nav_button {
+    font-size: 12px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 500px) {
+
 }

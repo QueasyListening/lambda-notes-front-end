@@ -131,7 +131,6 @@ class App extends Component {
   }
 
   updateServer = () => {
-
     axios.put('https://frozen-inlet-93885.herokuapp.com/api/update', { notes: this.state.notes, username: this.state.username })
     .then(response => {
       console.log('sever updated');
@@ -158,10 +157,6 @@ class App extends Component {
     }, 500);
   }
   
-  componentWillUnmount() {
-    // this.updateServer();  
-  }
-
   render() {
     
     return (
@@ -174,10 +169,10 @@ class App extends Component {
               <Link to='/addNewNote' className='nav_button'>+Create New Notes</Link>
               <Link to='/Register' className='nav_button'>Register for an Account</Link>
               <br/>
-              <button id='login_btn' data-toggle="modal" data-target="#loginModal" onClick={this.setFocus} >{this.state.loginText}</button>
+              <button id='login_btn' className='nav_button' data-toggle="modal" data-target="#loginModal" onClick={this.setFocus} >{this.state.loginText}</button>
               <div id='password_warning'>Incorrect Username/Password</div>
               <br/>
-              <button id='logout_btn' onClick={(event)=>{event.preventDefault(); this.logout()}}>Log Out</button>
+              <button id='logout_btn' className='nav_button' onClick={(event)=>{event.preventDefault(); this.logout()}}>Log Out</button>
               <div className='nav_head' id='current_user'>Logged in as: {this.state.loggedInAs}</div>
             </div>
             <Route exact path='/' render={(props) => <NoteList {...props} notes={this.state.notes}/> } />
